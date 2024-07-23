@@ -2,17 +2,17 @@ version: '3.7'
 
 services:
   configurator:
-    image: frappe/erpnext:${VERSION:?No image version set}
+    image: ${IMG_NAME}:${VERSION:?No image version set}
     volumes:
       - sites:/home/frappe/frappe-bench/sites
     command:
       - bench
       - new-site
       - --no-mariadb-socket
-      - --install-app=erpnext
+      - --install-app=lms
       - --db-root-password=admin
       - --admin-password=admin
-      - erp.example.com
+      - lms.exponit.in
     deploy:
       restart_policy:
         condition: none

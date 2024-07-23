@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   backend:
-    image: frappe/erpnext:${VERSION:?No image version set}
+    image: ${IMG_NAME}:${VERSION:?No image version set}
     deploy:
       restart_policy:
         condition: on-failure
@@ -14,7 +14,7 @@ services:
       - bench-network
 
   frontend:
-    image: frappe/erpnext:${VERSION}
+    image: ${IMG_NAME}:${VERSION}
     command:
       - nginx-entrypoint.sh
     deploy:
@@ -55,7 +55,7 @@ services:
       - traefik-public
 
   queue-default:
-    image: frappe/erpnext:${VERSION}
+    image: ${IMG_NAME}:${VERSION}
     deploy:
       restart_policy:
         condition: on-failure
@@ -72,7 +72,7 @@ services:
       - bench-network
 
   queue-long:
-    image: frappe/erpnext:${VERSION}
+    image: ${IMG_NAME}:${VERSION}
     deploy:
       restart_policy:
         condition: on-failure
@@ -89,7 +89,7 @@ services:
       - bench-network
 
   queue-short:
-    image: frappe/erpnext:${VERSION}
+    image: ${IMG_NAME}:${VERSION}
     deploy:
       restart_policy:
         condition: on-failure
@@ -106,7 +106,7 @@ services:
       - bench-network
 
   scheduler:
-    image: frappe/erpnext:${VERSION}
+    image: ${IMG_NAME}:${VERSION}
     deploy:
       restart_policy:
         condition: on-failure
@@ -121,7 +121,7 @@ services:
       - bench-network
 
   websocket:
-    image: frappe/erpnext:${VERSION}
+    image: ${IMG_NAME}:${VERSION}
     command:
       - node
       - /home/frappe/frappe-bench/apps/frappe/socketio.js
@@ -136,7 +136,7 @@ services:
       - bench-network
 
   migration:
-    image: frappe/erpnext:${VERSION}
+    image: ${IMG_NAME}:${VERSION}
     deploy:
       restart_policy:
         condition: none
